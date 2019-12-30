@@ -30,6 +30,7 @@ void setup() {
 void loop() {
 
   int LDRvalue = analogRead(LDR);
+  
 
    DHT.read11(DHT11pin);
    DHTTemp=(DHT.temperature);
@@ -42,15 +43,15 @@ void loop() {
 
   if(LDRvalue <= 400)
   {
-    //digitalWrite(LED, HIGH);
-    analogWrite(LED, LDRvalue);
+    //analogWrite(LED, HIGH);
+    analogWrite(LED, (1023-LDRvalue));
     Serial.print(" it's dark here!! we need some light \n");
     Serial.println(LDRvalue);
   }
   else 
     {
-      //digitalWrite(LED, LOW);
-      analogWrite(LED, LDRvalue);
+      //analogWrite(LED, LOW);
+      analogWrite(LED, (1023-LDRvalue));
       Serial.print(" it's bright here!! we need some dark \n");
       Serial.println(LDRvalue);
    }
